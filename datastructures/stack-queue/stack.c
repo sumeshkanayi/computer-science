@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void insert();
+void push();
 void traverse();
 void search();
-void delete();
+void pop();
 void traverse();
 struct node {
   int data ;
@@ -17,26 +17,27 @@ int COUNT=0;
 
 int main(){
   HEAD=NULL;
-  printf("Welcome to linked list \n");
+  printf("Welcome to Stack \n");
    
-  insert(10);
-  insert(20);
-  insert(30);
-  insert(40);
-  insert(50);
+  push(10);
+  push(20);
+  push(30);
+  push(40);
+  push(50);
 
   traverse();
 
   search(30);
 
-  delete(40);
+  pop();
+  pop();
   
   traverse();
 
 
 }
 
-void insert(int data){
+void push(int data){
 
 TEMP=(struct node*)malloc(sizeof(struct node));
 TEMP->data=data;
@@ -85,24 +86,14 @@ TEMP=HEAD;
 
 
 }
-void delete(int data){
-  printf("\n Deleting %d \n",data);
-struct node *PREVIOUS;
-while(TEMP->data != data){
-  PREVIOUS=TEMP;
-  TEMP=TEMP->next;
-  
+void pop(){
+  printf("\n Popping \n");
+  TEMP=HEAD;
+  printf("\n Popped %d\n",TEMP->data);
+  free(HEAD);
+  HEAD=TEMP->next;
+  TEMP=HEAD;
 
-  COUNT++;
-  if(TEMP == NULL){
-    printf("\n Key %d not found \n",data);
-    return;
-  }
-}
-PREVIOUS->next=TEMP->next;
-free(TEMP);
-TEMP=HEAD;
-PREVIOUS=TEMP;
 
 
 }
