@@ -1,0 +1,31 @@
+
+Linked list node is a struct with a data and pointer to next nodes' address 
+
+struct node {
+  int data ;
+  struct node *next;
+};
+
+
+inserting  a node:
+---------------------------
+
+
+1)Initialize HEAD to null
+  a) First when you create a node since HEAD is nul. Allocate memory using malloc and assign it to TEMP (Another variable) , now HEAD will point to TEMP.Since there is only one node now .TEMP->data will have the data you want to store
+
+  b)Later:
+    a) As usual TEMP will created with the data
+    b)existing HEAD's head->next should point to TEMP's address
+    c) and HEAD should point to TEMP now 
+    d) Without HEAD yo cannot traverse
+2)Traversal:
+   a) TEMP will point to HEAD
+   b) Inside while look check TEMP is null or not
+   c)If not make TEMP TEMP->next and loop till NULL
+3)Deletion:
+   a) Traverse till you find the key or NULL is returned
+    TEMP will be saved as PREVIOS and nex line TEMP will move ahead as TEMP->next whenever a match found get ot of the while loop set PREVIOS->next as TEMP->next and free the memory
+
+
+
