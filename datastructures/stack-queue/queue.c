@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void insert();
+void enqueue();
 void traverse();
 void search();
-void delete();
+void dequeue();
 void traverse();
 struct node {
   int data ;
@@ -13,47 +13,50 @@ struct node {
 
 struct node *HEAD;
 struct node *TEMP;
+struct node *REAR;
 int COUNT=0;
 
 int main(){
   HEAD=NULL;
-  printf("Welcome to linked list \n");
+  printf("Welcome to Queue \n");
    
-  insert(10);
-  insert(20);
-  insert(30);
-  insert(40);
-  insert(50);
+  enqueue(10);
+  enqueue(20);
+  enqueue(30);
+  enqueue(40);
+  enqueue(50);
 
   traverse();
 
   search(30);
 
-  delete(40);
+  dequeue();
+dequeue();
   
   traverse();
 
 
 }
 
-void insert(int data){
+void enqueue(int data){
 
 TEMP=(struct node*)malloc(sizeof(struct node));
 TEMP->data=data;
 if (HEAD==NULL){
-
+TEMP->next=NULL;
 HEAD=TEMP;
-HEAD->next=NULL;
+REAR=TEMP;
 
 }
 else{
 
-TEMP->next=HEAD;
-HEAD=TEMP;
+REAR->next=TEMP;
+REAR=TEMP;
 
 }
 
 TEMP=HEAD;
+
 
 }
 void traverse(){
@@ -85,24 +88,14 @@ TEMP=HEAD;
 
 
 }
-void delete(int data){
-  printf("\n Deleting %d \n",data);
-struct node *PREVIOUS;
-while(TEMP->data != data){
-  PREVIOUS=TEMP;
-  TEMP=TEMP->next;
-  
+void dequeue(){
 
-  COUNT++;
-  if(TEMP == NULL){
-    printf("\n Key %d not found \n",data);
-    return;
-  }
-}
-PREVIOUS->next=TEMP->next;
-free(TEMP);
-TEMP=HEAD;
-PREVIOUS=TEMP;
+  TEMP=HEAD;
+  printf("\n dequed %d\n",TEMP->data);
+  free(HEAD);
+  HEAD=TEMP->next;
+  TEMP=HEAD;
+
 
 
 }

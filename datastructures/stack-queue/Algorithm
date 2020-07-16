@@ -1,0 +1,29 @@
+
+Linked list node is a struct with a data and pointer to next nodes' address 
+
+struct node {
+  int data ;
+  struct node *next;
+};
+
+
+inserting  a node:
+---------------------------
+Complexity: 
+push/Enqueue O(1)
+insert at a position O(n)
+Tarversal: O(n)
+Deletion: O(n)
+pop/dequeue:  O(1)
+
+Stack:
+
+Same as linked list
+
+Push and pull from head
+
+Q:
+Enque:
+1)Uses another variable called rear
+2) You can think of Stack as something which grows towards front direction
+3)Q towards rear
